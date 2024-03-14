@@ -57,7 +57,16 @@ form input{
 }
 
 header{
+  color: black;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+header p{
+  margin: 0%;
+}
+
+user-section{
+ margin-bottom: auto;
 }

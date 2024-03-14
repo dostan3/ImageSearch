@@ -14,10 +14,10 @@ function App() {
     <div>
 
     <h1>Pick Your Puck</h1>
-    <p>or Search for Kittens, Because It's More Fun</p>
+    <p>or Search for <strong>Kittens</strong>, Because It's More <strong>Fun</strong></p>
     </div>
 
-    <div>
+    <div className='user-section'>
     <LoginButton />
     <LogoutButton />
     </div>
