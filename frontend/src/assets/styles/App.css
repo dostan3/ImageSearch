@@ -67,6 +67,14 @@ header p{
   margin: 0%;
 }
 
-user-section{
- margin-bottom: auto;
+ .user{
+  display: flex;
+  height: 40px;
+  margin-bottom: auto;
+}
+
+.user img{
+  border-radius: 50%;
+  height: 100%;
+  margin: auto 10px auto 0px;
 }
