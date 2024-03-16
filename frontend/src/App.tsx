@@ -1,11 +1,12 @@
 
-import { useState } from 'react';
 import '../src/assets/styles/App.css'
 import LoginButton from './Components/LoginButton'
 import LogoutButton from './Components/LogoutButton'
+import SearchPic from './Components/SearchPic'
 import Profile from './Components/Profile';
 import mainpic from './img/boredape.png';
 import { useAuth0 } from '@auth0/auth0-react';
+import SignInSign from './Components/SignInSign';
 
 function App() {
 
@@ -40,16 +41,13 @@ function App() {
       <img src={mainpic} alt=""  className='mainpic'/>
     </div>
 
-    <form action="">
-      <input type="text" />
-      <button>Puck-it</button>
-    </form>
-    
-
- 
+      {isAuthenticated ?  <SearchPic /> : <SignInSign /> }
+   
+  
     
     </>
   )
 }
 
 export default App
+

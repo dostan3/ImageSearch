@@ -78,3 +78,21 @@ header p{
   height: 100%;
   margin: auto 10px auto 0px;
 }
+
+.Sign-in-container{
+  color: black;
+}
+
+
+.search-results{
+  display: flex;
+  
+}
+
+.image-container{
+  width: 25%;
+}
+
+.img-container img{
+  width: 50%;
+}
