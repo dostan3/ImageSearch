@@ -1,9 +1,15 @@
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
+
 import '../src/assets/styles/index.css'
 import { Auth0Provider } from '@auth0/auth0-react';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './Router.tsx';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+
+
+
+
+  ReactDOM.createRoot(document.getElementById('root')!).render(
   <Auth0Provider
   domain="dev-z1yk67sb8yvazryj.us.auth0.com"
   clientId={import.meta.env.VITE_AUTH0_CLIENT_ID_KEY}
@@ -11,6 +17,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     redirect_uri: window.location.origin
   }}
 >
-  <App />
+
+
+  <RouterProvider router={router} />
+
+
 </Auth0Provider>,
 )

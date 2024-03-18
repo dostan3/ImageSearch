@@ -86,13 +86,44 @@ header p{
 
 .search-results{
   display: flex;
+  flex-wrap: wrap;
   
 }
 
-.image-container{
-  width: 25%;
+
+
+.search-img-container {
+  margin: 0 auto;
+  width: 30%;
+  height: max-content;
+
 }
 
-.img-container img{
-  width: 50%;
+.search-img-container img {
+  width: 100%;
+}
+
+.profile-detail:hover{
+  cursor: pointer;
+  
+}
+
+.logo-slogan:hover{
+  cursor: pointer;
+}
+
+.correction i{
+  color: black;
+  
+}
+
+.search-info{
+  display: flex;
+ justify-content: center;
+ gap: 15px;
+}
+
+.search-info div{
+  display: flex;
+  align-items: center;
 }

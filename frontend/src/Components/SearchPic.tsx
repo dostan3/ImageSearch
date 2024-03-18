@@ -5,16 +5,19 @@ interface ApiResponseItem{
   displayLink:string;
   searchTime: string;
   link: string;
+  htmlCorrectedQuery:string;
+  spelling:string;
+}
 
-
- 
+interface spellingCorrection{
+  htmlCorrectedQuery:string;
 }
 
 interface ApiResponse{
   items: ApiResponseItem[];
+  spelling:spellingCorrection;
   searchInformation: {
-    formattedTotalResults:string;
-    searchTime: string;
+  searchTime: string;
   }
 }
 
@@ -31,13 +34,13 @@ const  SearchPic = () => {
     event.preventDefault();
     // setIsLoading(true);
     
-    const SearchUrl = `https://www.googleapis.com/customsearch/v1?key=${googleApiKey}&cx=${searchEngineId}&searchType=image&num=5&q=${userInput}`
+    const SearchUrl = `https://www.googleapis.com/customsearch/v1?key=${googleApiKey}&cx=${searchEngineId}&searchType=image&num=10&q=${userInput}`
 
     
     try {
       const response = await axios.get<ApiResponse>(SearchUrl);
       setSearchResult(response.data);
-      console.log(response.data) // Store the entire response
+      console.log(response.data) 
     } catch (error) {
       console.error("Error fetching data", error);
     }
@@ -62,19 +65,27 @@ return(
     {searchResult && (
       
       <>
+      <div className="search-info">
+        {searchResult?.spelling?.htmlCorrectedQuery && (
+          <div className="correction">
+        Did you mean: <span dangerouslySetInnerHTML={{ __html: searchResult.spelling.htmlCorrectedQuery }}></span>?
+        </div>
+          )}
       <p>{searchResult.searchInformation.searchTime} sec</p>
+
+      </div>
       
       <div className="search-results">
       {searchResult.items.map((item, index) =>(
-        <div key={index} className="">
         
-          <div className="img-container">
+    
+          <div key={index} className="search-img-container">
             <img 
             src={item.link} 
             alt='Search results' />
           </div>
             
-        </div>
+        
       ))}
     </div>
     </>
