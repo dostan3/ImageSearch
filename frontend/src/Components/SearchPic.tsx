@@ -7,6 +7,9 @@ interface ApiResponseItem{
   link: string;
   htmlCorrectedQuery:string;
   spelling:string;
+  fileFormat:string;
+  title:string;
+
 }
 
 interface spellingCorrection{
@@ -19,13 +22,16 @@ interface ApiResponse{
   searchInformation: {
   searchTime: string;
   }
+
 }
 
 
 const  SearchPic = () => {
   const [userInput, setUserInput] = useState ('');
   const [searchResult, setSearchResult] = useState<ApiResponse | null>(null);
-  
+
+
+
   const searchEngineId  = import.meta.env.VITE_GOOGLE_SEARCH_ID_KEY;
   const googleApiKey = import.meta.env.VITE_GOOGLE_APIKEY;
   
@@ -45,7 +51,25 @@ const  SearchPic = () => {
       console.error("Error fetching data", error);
     }
   };
-      
+
+  const SavePuck = async (item: ApiResponseItem) => {
+    const saveUrl = 'http://localhost:3000/api/favorites';
+    const username = 'randomDudes';
+    try{
+      const response = await axios.post(saveUrl, {
+        username,
+        link: item.link,
+        fileFormat: item.fileFormat,
+        title:item.title,
+      })
+      console.log('bilden är nu sparad', response.data);
+
+    }catch (error) {
+      console.error("error saving puck", error);
+
+    }
+  
+  }      
    
   
 
@@ -81,6 +105,7 @@ return(
     
           <div key={index} className="search-img-container">
             <img 
+            onClick={()=> SavePuck(item)}
             src={item.link} 
             alt='Search results' />
           </div>

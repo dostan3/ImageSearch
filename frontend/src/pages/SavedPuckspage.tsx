@@ -1,4 +1,5 @@
 import Header from "../Components/Header"
+import ShowSavedPucks from "../Components/ShowSavedPucks"
 
 const SavedPucksPage = () => {
     return (
@@ -7,9 +8,7 @@ const SavedPucksPage = () => {
 
         <h1>Here is your saved pucks</h1>
 
-        <div>
-            
-        </div>
+        <ShowSavedPucks />
         </>
     )
 
