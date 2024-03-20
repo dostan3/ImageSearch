@@ -100,8 +100,18 @@ header p{
 }
 
 .search-img-container img {
-  width: 100%;
+  width: 90%;
+  cursor: pointer;
+  border-radius: 12px;
 }
+
+.search-img-container img:hover {
+  width: 100%;
+ 
+
+}
+
+
 
 .profile-detail:hover{
   cursor: pointer;
@@ -127,3 +137,19 @@ header p{
   display: flex;
   align-items: center;
 }
+
+.saved-pucks{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5%;
+}
+
+.saved-pucks div{
+  margin: 0 auto;
+ width: 30%;
+}
+
+
+.saved-pucks div img{
+  width: 100%;
+ }
