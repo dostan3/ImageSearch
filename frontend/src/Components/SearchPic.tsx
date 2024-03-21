@@ -43,7 +43,6 @@ const  SearchPic = () => {
   
   const { user} = useAuth0();
 
-  console.log(user)
  
   const   handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

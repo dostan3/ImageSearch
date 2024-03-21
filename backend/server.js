@@ -65,9 +65,13 @@ app.get('/api/favorites', (req, res) => {
 
       const jsonData = JSON.parse(data.toString());
       const user= jsonData.users.find(u=> u.username === userId);
+    
+    
       if (!user) {
-        return res.status(404).send('user is not found')
+        return res.status(200).json([]); // Respond with an empty array instead of 404
       }
+
+      
       res.json(user.favoriteImages);
     });
   });

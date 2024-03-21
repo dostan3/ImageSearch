@@ -1,6 +1,24 @@
 {
   "users": [
-    
-     
+    {
+      "username": "github|128112999",
+      "favoriteImages": [
+        {
+          "link": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Social_Security_System_%28SSS%29.svg/1200px-Social_Security_System_%28SSS%29.svg.png",
+          "fileFormat": "image/png",
+          "title": "Social Security System (Philippines) - Wikipedia"
+        }
+      ]
+    },
+    {
+      "username": "google-oauth2|116462681438484995610",
+      "favoriteImages": [
+        {
+          "link": "https://i.pinimg.com/474x/93/a3/18/93a318f957afbc780daba9a4ebd62b96.jpg",
+          "fileFormat": "image/jpeg",
+          "title": "Download Blue, Nature, Wings. Royalty-Free Stock Illustration ..."
+        }
+      ]
+    }
   ]
 }
