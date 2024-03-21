@@ -9,10 +9,6 @@ interface Puck{
 
 }
 
-// interface User {
-//     username: string;
-//     favoriteImages: Puck[];
-//   }
 
 const ShowSavedPucks = () =>{
 
@@ -33,23 +29,11 @@ const ShowSavedPucks = () =>{
         }
     }, [user?.sub])
 
-//         .then(response => {
-//             const allPucks = response.data.users.flatMap((user: User )=> user.favoriteImages); // Ensure the property name matches your JSON structure
-//             setSavedPucks(allPucks); // Using allPucks to set the state
-//             console.log(allPucks);
-//         })
-
-
-//     .catch(error =>{
-//         console.log('erro fetching the data', error);
-//     });
-// }, []);
     
 
 
     return(
         <>
-        <h1>saved pucks</h1>
         
         <div className="saved-pucks">
 

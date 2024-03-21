@@ -70,7 +70,7 @@ header p{
  .user{
   display: flex;
   height: 40px;
-  margin-bottom: auto;
+  margin: auto 0;
 }
 
 .user img{
@@ -152,4 +152,9 @@ header p{
 
 .saved-pucks div img{
   width: 100%;
+ }
+
+ h1{
+  font-size: 25px;
+  margin-top: 5%;
  }

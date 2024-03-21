@@ -5,7 +5,7 @@ const Joi = require('joi')
 
 
 const imageSchema = Joi.object({
-    username: Joi.string().required(),
+    user: Joi.string().required(),
     link: Joi.string().uri().required(),
     fileFormat: Joi.string().required(),
     title: Joi.string().required(),
@@ -34,15 +34,15 @@ app.post('/api/favorites', async (req,res) => {
         }
 
         const jsonData = JSON.parse(data.toString());
-        const { username, link, fileFormat, title } = req.body;
+        const { user, link, fileFormat, title } = req.body;
 
-        let user = jsonData.users.find(u => u.username === username);
-        if (!user) {
-            user = {username, favoriteImages: [] };
-            jsonData.users.push(user);
+        let userEntry = jsonData.users.find(u => u.user === user);
+        if (!userEntry) {
+            userEntry = {user, favoriteImages: [] };
+            jsonData.users.push(userEntry);
         }
 
-        user.favoriteImages.push({ link, fileFormat, title });
+        userEntry.favoriteImages.push({ link, fileFormat, title });
 
         fs.writeFile('savedPucks.json', JSON.stringify(jsonData, null, 2), writeError =>{
             if (writeError){
@@ -64,13 +64,13 @@ app.get('/api/favorites', (req, res) => {
       }
 
       const jsonData = JSON.parse(data.toString());
-      const user= jsonData.users.find(u=> u.username === userId);
+      const user= jsonData.users.find(u=> u.user === userId);
     
     
       if (!user) {
-        return res.status(200).json([]); // Respond with an empty array instead of 404
+          console.log('puck enjoyer do not exist therefor nothing to show') 
+        return res.status(200).json([]);
       }
-
       
       res.json(user.favoriteImages);
     });

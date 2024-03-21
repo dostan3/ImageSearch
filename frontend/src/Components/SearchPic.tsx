@@ -26,15 +26,12 @@ interface ApiResponse{
 
 }
 
-// interface auth0{
-//   sub:string
 
-// }
 
 const  SearchPic = () => {
   const [userInput, setUserInput] = useState ('');
   const [searchResult, setSearchResult] = useState<ApiResponse | null>(null);
-  // const [userId, setUserId] = useState <auth0 | null>(null)
+
 
 
 
@@ -46,7 +43,7 @@ const  SearchPic = () => {
  
   const   handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // setIsLoading(true);
+    
     
     const SearchUrl = `https://www.googleapis.com/customsearch/v1?key=${googleApiKey}&cx=${searchEngineId}&searchType=image&num=10&q=${userInput}`
 
@@ -64,12 +61,12 @@ const  SearchPic = () => {
 
   const SavePuck = async (item: ApiResponseItem) => {
     const saveUrl = 'http://localhost:3000/api/favorites';
-    // const username = userId;
+
     try{ 
       if  (user?.sub){
 
         const response = await axios.post(saveUrl, {
-          username: user.sub,
+          user: user.sub,
           link: item.link,
           fileFormat: item.fileFormat,
           title:item.title,
