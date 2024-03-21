@@ -41,11 +41,19 @@ app.post('/api/favorites', async (req,res) => {
 
 
 app.get('/api/favorites', (req, res) => {
+    const userId = req.query.userId;
+
     fs.readFile('savedPucks.json', (err, data) => {
       if (err) {
         return res.status(500).send('Error reading from file');
       }
-      res.json(JSON.parse(data.toString()));
+
+      const jsonData = JSON.parse(data.toString());
+      const user= jsonData.users.find(u=> u.username === userId);
+      if (!user) {
+        return res.status(404).send('user is not found')
+      }
+      res.json(user.favoriteImages);
     });
   });
   

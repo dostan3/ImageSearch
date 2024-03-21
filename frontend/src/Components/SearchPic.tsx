@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { useAuth0 } from '@auth0/auth0-react';
 
 interface ApiResponseItem{
   displayLink:string;
@@ -25,16 +26,24 @@ interface ApiResponse{
 
 }
 
+// interface auth0{
+//   sub:string
+
+// }
 
 const  SearchPic = () => {
   const [userInput, setUserInput] = useState ('');
   const [searchResult, setSearchResult] = useState<ApiResponse | null>(null);
+  // const [userId, setUserId] = useState <auth0 | null>(null)
 
 
 
   const searchEngineId  = import.meta.env.VITE_GOOGLE_SEARCH_ID_KEY;
   const googleApiKey = import.meta.env.VITE_GOOGLE_APIKEY;
   
+  const { user} = useAuth0();
+
+  console.log(user)
  
   const   handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -52,18 +61,23 @@ const  SearchPic = () => {
     }
   };
 
+  
+
   const SavePuck = async (item: ApiResponseItem) => {
     const saveUrl = 'http://localhost:3000/api/favorites';
-    const username = 'randomDudes';
-    try{
-      const response = await axios.post(saveUrl, {
-        username,
-        link: item.link,
-        fileFormat: item.fileFormat,
-        title:item.title,
-      })
-      console.log('bilden är nu sparad', response.data);
+    // const username = userId;
+    try{ 
+      if  (user?.sub){
 
+        const response = await axios.post(saveUrl, {
+          username: user.sub,
+          link: item.link,
+          fileFormat: item.fileFormat,
+          title:item.title,
+        })
+        console.log('bilden är nu sparad', response.data);
+      }
+        
     }catch (error) {
       console.error("error saving puck", error);
 
