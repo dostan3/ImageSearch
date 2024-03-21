@@ -1,8 +1,15 @@
 const express = require("express")
 const fs = require('fs')
 const cors = require('cors')
+const Joi = require('joi')
 
 
+const imageSchema = Joi.object({
+    username: Joi.string().required(),
+    link: Joi.string().uri().required(),
+    fileFormat: Joi.string().required(),
+    title: Joi.string().required(),
+})
 
 
 const app = express()
@@ -12,8 +19,16 @@ app.use(cors())
 
 
 app.post('/api/favorites', async (req,res) => {
+
+    const { error } = imageSchema.validate(req.body);
+    if (error) {
+        return res.status(400).send(error.details[0].message);
+    }
+
+    
    
     fs.readFile('savedPucks.json', (readError, data) => {
+
         if (readError) {
           return res.status(500).send('Error reading from file');
         }
